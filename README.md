@@ -21,7 +21,7 @@ while focusing on the following platforms:
 If you don't have 32-bit ARM-v7 board yet, then you can try QEMU.
 
 ```
-./tools/configure qemu-armv7a:nsh
+./tools/configure.sh qemu-armv7a:nsh
 make menuconfig
 make
 qemu-system-arm -M virt -device loader,file=nuttx -nographic
@@ -30,7 +30,7 @@ qemu-system-arm -M virt -device loader,file=nuttx -nographic
 ## SIM POSIX Executable
 
 ```
-./tools/configure sim:nsh
+./tools/configure.sh sim:nsh
 make menuconfig
 make
 ./nuttx
