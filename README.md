@@ -1,42 +1,53 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/apache/nuttx/master/Documentation/_static/NuttX320.png" width="175">
-</p>
+# Synrc RTS
 
-![POSIX Badge](https://img.shields.io/badge/POSIX-Compliant-brightgreen?style=flat&label=POSIX)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue
-)](https://nuttx.apache.org/docs/latest/introduction/licensing.html)
-![Issues Tracking Badge](https://img.shields.io/badge/issue_track-github-blue?style=flat&label=Issue%20Tracking)
-[![Contributors](https://img.shields.io/github/contributors/apache/nuttx
-)](https://github.com/apache/nuttx/graphs/contributors)
-[![GitHub Build Badge](https://github.com/apache/nuttx/workflows/Build/badge.svg)](https://github.com/apache/nuttx/actions/workflows/build.yml)
-[![Documentation Badge](https://github.com/apache/nuttx/workflows/Build%20Documentation/badge.svg)](https://nuttx.apache.org/docs/latest/index.html)
+Synrc RTS is a specialized distribution of Apache NuttX RTOS
+tailored for needs of Synrc Skynet application,
+supporting a curated set of hardware platforms.
 
-Apache NuttX is a real-time operating system (RTOS) with an emphasis on
-standards compliance and small footprint. Scalable from 8-bit to 64-bit
-microcontroller environments, the primary governing standards in NuttX are POSIX
-and ANSI standards. Additional standard APIs from Unix and other common RTOSs
-(such as VxWorks) are adopted for functionality not available under these
-standards, or for functionality that is not appropriate for deeply-embedded
-environments (such as fork()).
+Synrc RTS is a lightweight fork of NuttX, optimized
+to support specific boards for real-time applications.
+It retains the core functionality of NuttX
+while focusing on the following platforms:
 
-For brevity, many parts of the documentation will refer to Apache NuttX as simply NuttX.
+* SIM: POSIX-based simulation environment
+* QEMU: ARMv7-A virtualization
+* Sony Spresense: CXD5602
+* Raspberry Pi Pico: RP2040
+* Raspberry Pi Pico 2: RP2350
+* PinePhone Pro: RK3399
 
-## Getting Started
-First time on NuttX? Read the [Getting Started](https://nuttx.apache.org/docs/latest/quickstart/index.html) guide!
-If you don't have a board available, NuttX has its own simulator that you can run on terminal.
+## QEMU Virual Board
 
-## Documentation
-You can find the current NuttX documentation on the [Documentation Page](https://nuttx.apache.org/docs/latest/).
+If you don't have 32-bit ARM-v7 board yet, then you can try QEMU.
 
-Alternatively, you can build the documentation yourself by following the Documentation Build [Instructions](https://nuttx.apache.org/docs/latest/contributing/documentation.html).
+```
+./tools/configure qemu-armv7a:nsh
+make menuconfig
+make
+qemu-system-arm -M virt -device loader,file=nuttx -nographic
+```
 
-The old NuttX documentation is still available in the [Apache wiki](https://cwiki.apache.org/NUTTX/NuttX).
+## SIM POSIX Executable
 
-## Supported Boards
-NuttX supports a wide variety of platforms. See the full list on the [Supported Platforms](https://nuttx.apache.org/docs/latest/platforms/index.html) page.
-
-## Contributing
-If you wish to contribute to the NuttX project, read the [Contributing](https://nuttx.apache.org/docs/latest/contributing/index.html) guidelines for information on Git usage, coding standard, workflow and the NuttX principles.
+```
+./tools/configure sim:nsh
+make menuconfig
+make
+./nuttx
+```
 
 ## License
-The code in this repository is under either the Apache 2 license, or a license compatible with the Apache 2 license. See the [License Page](https://nuttx.apache.org/docs/latest/introduction/licensing.html) for more information.
+
+Synrc RTS is licensed under the Apache License 2.0.
+It is a derivative of Apache NuttX,
+modified to support the listed boards.
+See the NOTICE file for details.
+
+## Acknowledgment
+
+Based on <a href="https://nuttx.apache.org/">Apache NuttX RTOS</a>.
+Thanks to Gregory Nutt and the NuttX community for their foundational work.
+
+## Author
+
+* Namdak Tonpa
