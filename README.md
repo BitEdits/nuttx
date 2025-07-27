@@ -36,6 +36,14 @@ make
 ./nuttx
 ```
 
+## Pico 2 Firmware
+
+```
+./tools/configure.sh raspberrypi-pico-2:usbnsh
+make menuconfig
+make
+```
+
 ## License
 
 Synrc RTS is licensed under the Apache License 2.0.
